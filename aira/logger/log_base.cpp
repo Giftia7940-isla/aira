@@ -1,9 +1,11 @@
 #include "log_base.h"
 
-namespace aira {
-
-	const char* LogLevel::toString(LogLevel::Level level) {
-		switch (level) {
+namespace aira 
+{
+	const char* LogLevel::toString(LogLevel::Level level)
+	{
+		switch (level) 
+		{
 
 #define XX(name)	\
 case LogLevel::name:	\
@@ -17,7 +19,7 @@ break;
 #undef XX
 		default: return "UNKOWN";
 		}
+		return  "UNKOWN";
 	}
-
 }
 

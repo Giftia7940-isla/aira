@@ -109,6 +109,14 @@ build aira\CMakeFiles\aira.dir\logger\log_base.cpp.obj: CXX_COMPILER__aira_unsca
   TARGET_COMPILE_PDB = aira\CMakeFiles\aira.dir\
   TARGET_PDB = aira\aira.pdb
 
+build aira\CMakeFiles\aira.dir\logger\log_formatter.cpp.obj: CXX_COMPILER__aira_unscanned_Debug E$:\Code\ServerProgram\aira\aira\logger\log_formatter.cpp || cmake_object_order_depends_target_aira
+  FLAGS = -std:c++20 -ZI
+  INCLUDES = -IE:\Code\ServerProgram\aira\aira\base -IE:\Code\ServerProgram\aira\aira\logger
+  OBJECT_DIR = aira\CMakeFiles\aira.dir
+  OBJECT_FILE_DIR = aira\CMakeFiles\aira.dir\logger
+  TARGET_COMPILE_PDB = aira\CMakeFiles\aira.dir\
+  TARGET_PDB = aira\aira.pdb
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target aira
@@ -117,7 +125,7 @@ build aira\CMakeFiles\aira.dir\logger\log_base.cpp.obj: CXX_COMPILER__aira_unsca
 #############################################
 # Link the executable aira\aira.exe
 
-build aira\aira.exe: CXX_EXECUTABLE_LINKER__aira_Debug aira\CMakeFiles\aira.dir\aira.cpp.obj aira\CMakeFiles\aira.dir\logger\logger.cpp.obj aira\CMakeFiles\aira.dir\logger\log_appender.cpp.obj aira\CMakeFiles\aira.dir\logger\log_base.cpp.obj
+build aira\aira.exe: CXX_EXECUTABLE_LINKER__aira_Debug aira\CMakeFiles\aira.dir\aira.cpp.obj aira\CMakeFiles\aira.dir\logger\logger.cpp.obj aira\CMakeFiles\aira.dir\logger\log_appender.cpp.obj aira\CMakeFiles\aira.dir\logger\log_base.cpp.obj aira\CMakeFiles\aira.dir\logger\log_formatter.cpp.obj
   FLAGS = -ZI
   LINK_FLAGS = /subsystem:console
   LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib

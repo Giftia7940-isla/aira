@@ -9,9 +9,11 @@ namespace aira
 {
 
 	//日志器
-	class Logger {
+	class Logger 
+	{
 	public:
-		Logger(const std::string& name);
+		typedef std::shared_ptr<Logger> ptr;
+		Logger(const std::string& name, LogLevel::Level level = LogLevel::DEBUG);
 		~Logger();
 
 		void log(LogLevel::Level  level, LogEvent::ptr event);
@@ -32,6 +34,7 @@ namespace aira
 		std::string m_name;									//日志名称
 		LogLevel::Level m_lowestLevel;						//最低能接受的日志级别
 		std::list<LogAppender::ptr> m_appenders;			//Appender集合
+		LogFormatter::ptr m_formatter;						//格式
 	};
 
 }

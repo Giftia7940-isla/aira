@@ -2,10 +2,10 @@
 
 namespace aira
 {
-	Logger::Logger(const std::string& name)
+	Logger::Logger(const std::string& name, LogLevel::Level level)
 		: m_name(name)
 	{
-
+		m_formatter = std::make_shared<LogFormatter>("%d [%p] %f:%l %m %n");
 	}
 
 	Logger::~Logger()
@@ -19,7 +19,7 @@ namespace aira
 		{
 			for (auto& appender : m_appenders)
 			{
-				appender->log(level, event);
+				appender->log(m_name, level, event);
 			}
 		}
 	}
@@ -65,6 +65,10 @@ namespace aira
 		for (auto it = m_appenders.begin(); it != m_appenders.end(); ++it)
 		{
 			if (*it == appender) return false;				//ÒÑ¾­Ìí¼Ó
+		}
+		if (!appender->getFormatter())
+		{
+			appender->setFormatter(m_formatter);
 		}
 		m_appenders.push_back(appender);
 		return true;
