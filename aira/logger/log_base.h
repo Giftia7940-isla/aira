@@ -1,17 +1,19 @@
 #ifndef _AIRA_LOG_BASE_H_
 #define _AIRA_LOG_BASE_H_
 
-#include <stdio.h>
 #include <string>
-#include <fstream>
+#include <memory>
 #include "base_define.h"
 
-namespace aira {
+namespace aira 
+{
 
 	//日志等级
-	class LogLevel {
+	class LogLevel 
+	{
 	public:
-		enum Level {
+		enum Level 
+		{
 			DEBUG = 1,
 			INFO = 2,
 			WARN = 3,
@@ -19,13 +21,26 @@ namespace aira {
 			FATAL = 5
 		};
 		//转字符串
-		const char* toString(LogLevel::Level level);
+		static const char* toString(LogLevel::Level level);
 	};
 
 	//日志事件
-	class LogEvent {
+	class LogEvent 
+	{
 	public:
 		typedef std::shared_ptr<LogEvent> ptr;
+		LogEvent(const char* file, uint32_t line, uint32_t threadId, uint32_t fiberId
+			, uint64_t time, uint64_t elapse, std::string content)
+			:m_file(file),
+			m_line(line),
+			m_threadId(threadId),
+			m_fiberId(fiberId),
+			m_time(time),
+			m_elapse(elapse),
+			m_content(content)
+		{
+
+		}
 
 		const char* getFile() const { return m_file; }
 		uint32_t getLine() const { return m_line; }
@@ -43,14 +58,5 @@ namespace aira {
 		uint64_t m_time = 0;			//时间
 		std::string m_content;			//内容
 	};
-
-	class LogFormatter {
-	public:
-		typedef std::shared_ptr<LogFormatter> ptr;
-
-		std::string format(LogLevel::Level level, LogEvent::ptr event);
-	private:
-	};
-
 }
 #endif
